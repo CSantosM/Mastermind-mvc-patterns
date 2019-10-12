@@ -14,11 +14,6 @@ public class ConsoleView extends View {
 	public void interact(AcceptorController acceptorController) {
 		acceptorController.accept(this);
 	}
-	
-	@Override
-	public void interact(AcceptorController acceptorController) {
-		acceptorController.accept(this);
-	}
 
 	public void visit(StartController startController) {
 		new StartView().interact(startController);
