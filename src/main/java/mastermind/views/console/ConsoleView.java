@@ -9,16 +9,10 @@ import mastermind.views.console.menu.PlayMenu;
 
 public class ConsoleView extends View {
 
-	private StartView startView;
-
-	private ProposalView proposalView;
-
-	private ResumeView resumeView;
-
-	public ConsoleView() {
-		this.startView = new StartView();
-		this.proposalView = new ProposalView();
-		this.resumeView = new ResumeView();
+	
+	@Override
+	public void interact(AcceptorController acceptorController) {
+		acceptorController.accept(this);
 	}
 	
 	@Override
@@ -35,7 +29,7 @@ public class ConsoleView extends View {
 	}
 
 	public void visit(ResumeController resumeController) {
-		this.resumeView.interact(resumeController);
+		new ResumeView().interact(resumeController);
 	}
 
 
