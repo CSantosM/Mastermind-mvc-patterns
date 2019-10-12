@@ -2,7 +2,6 @@ package mastermind.models;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import mastermind.types.Color;
 
 public class Game {
@@ -38,9 +37,9 @@ public class Game {
 	public boolean isLooser() {
 		return this.attempts == Game.MAX_LONG;
 	}
-	
+
 	public boolean isWinner() {
-		return this.results.get(this.attempts-1).isWinner();
+		return this.results.size() > 0 && this.results.get(this.attempts - 1).isWinner();
 	}
 
 	public int getAttempts() {
@@ -61,6 +60,22 @@ public class Game {
 
 	public int getWidth() {
 		return Combination.getWidth();
+	}
+
+	public Memento createMemento() {
+		Memento memento = new Memento();
+		memento.setAttempts(this.attempts);
+		memento.setSecretCombination(this.secretCombination);
+		memento.setResults(this.results);
+		memento.setProposedCombinations(this.proposedCombinations);
+		return memento;
+	}
+
+	public void restore(Memento memento) {
+		this.attempts = memento.getAttempts();
+		this.secretCombination = memento.getSecretCombination();
+		this.results = memento.getResults();
+		this.proposedCombinations = memento.getProposedCombinations();
 	}
 
 }

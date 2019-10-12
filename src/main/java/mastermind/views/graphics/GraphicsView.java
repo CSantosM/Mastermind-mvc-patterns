@@ -1,5 +1,7 @@
 package mastermind.views.graphics;
 
+import mastermind.controllers.AcceptorController;
+import mastermind.controllers.InGameController;
 import mastermind.controllers.ProposalController;
 import mastermind.controllers.ResumeController;
 import mastermind.controllers.StartController;
@@ -13,17 +15,14 @@ public class GraphicsView extends View {
 		this.gameView = new GameView();
 	}
 
-	@Override
 	public void visit(StartController startController) {
 		this.gameView.interact(startController);
 	}
 
-	@Override
 	public void visit(ProposalController proposalController) {
 		this.gameView.interact(proposalController);
 	}
 
-	@Override
 	public void visit(ResumeController resumeController) {
 		ResumeDialog resumeDialog = new ResumeDialog();
 		resumeController.resume(resumeDialog.isNewGame());
@@ -33,6 +32,16 @@ public class GraphicsView extends View {
 			this.gameView.setVisible(false);
 			System.exit(0);
 		}
+	}
+
+	@Override
+	public void interact(AcceptorController acceptorcontroller) {
+		
+	}
+
+	public void visit(InGameController inGameController) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

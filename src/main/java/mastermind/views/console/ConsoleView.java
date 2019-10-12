@@ -1,9 +1,11 @@
 package mastermind.views.console;
 
-import mastermind.controllers.ProposalController;
+import mastermind.controllers.AcceptorController;
+import mastermind.controllers.InGameController;
 import mastermind.controllers.ResumeController;
 import mastermind.controllers.StartController;
 import mastermind.views.View;
+import mastermind.views.console.menu.PlayMenu;
 
 public class ConsoleView extends View {
 
@@ -18,20 +20,23 @@ public class ConsoleView extends View {
 		this.proposalView = new ProposalView();
 		this.resumeView = new ResumeView();
 	}
-
+	
 	@Override
+	public void interact(AcceptorController acceptorController) {
+		acceptorController.accept(this);
+	}
+
 	public void visit(StartController startController) {
-		this.startView.interact(startController);
+		new StartView().interact(startController);
 	}
 
-	@Override
-	public void visit(ProposalController proposalController) {
-		this.proposalView.interact(proposalController);
+	public void visit(InGameController inGameController) {
+		new PlayMenu(inGameController).execute();
 	}
 
-	@Override
 	public void visit(ResumeController resumeController) {
 		this.resumeView.interact(resumeController);
 	}
+
 
 }

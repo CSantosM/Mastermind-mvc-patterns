@@ -9,9 +9,9 @@ import mastermind.views.console.ErrorView;
 import mastermind.utils.WithConsoleView;
 import mastermind.views.MessageView;
 
-class ProposalView extends WithConsoleView {
+public class ProposalView extends WithConsoleView {
 
-	void interact(ProposalController proposalController) {
+	public void interact(ProposalController proposalController) {
 		Error error;
 		do {
 			List<Color> colors = new ProposedCombinationView(proposalController).read();
@@ -32,6 +32,6 @@ class ProposalView extends WithConsoleView {
 		} else if (proposalController.isLooser()) {
 			this.console.writeln(MessageView.LOOSER.getMessage());
 		}
-	}
 
+	}
 }
