@@ -10,7 +10,7 @@ public class ProposeCommand extends Command {
 
 	@Override
 	protected void execute() {
-		this.inGameController.proposalViewInteract();
+		((InGameController) this.acceptorController).proposalViewInteract();
 
 	}
 

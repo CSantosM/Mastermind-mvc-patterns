@@ -10,11 +10,11 @@ public class RedoCommand extends Command {
 
 	@Override
 	protected void execute() {
-		this.inGameController.redo();
+		((InGameController) this.acceptorController).redo();
 	}
 
 	@Override
 	public boolean isActive() {
-		return this.inGameController.isredoable();
+		return ((InGameController) this.acceptorController).isredoable();
 	}
 }

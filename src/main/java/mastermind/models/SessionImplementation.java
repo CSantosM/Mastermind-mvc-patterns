@@ -12,6 +12,8 @@ public class SessionImplementation implements Session {
 
 	private Registry registry;
 
+	private String name;
+
 	public SessionImplementation() {
 		this.state = new State();
 		this.game = new Game();
@@ -83,6 +85,37 @@ public class SessionImplementation implements Session {
 
 	public boolean isUndoable() {
 		return this.registry.isUndoable();
+	}
+
+	public boolean hasName() {
+		return this.name != null;
+	}
+
+	public boolean isGameFinished() {
+		return this.game.isFinished();
+	}
+
+	public void resetRegistry() {
+		this.registry.reset();
+
+	}
+
+	public void setStateValue(StateValue state) {
+		this.state.setStateValue(state);
+
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+
+	}
+
+	public Game getGame() {
+		return this.game;
 	}
 
 }

@@ -15,7 +15,9 @@ public enum FrameType {
     IS_WINNER,
     IS_LOOSER,
     PROPOSAL_VIEW,
-    CLOSE;
+    CLOSE, 
+    STARTNAME,
+    TITLES;
    
 
     public static FrameType parser(String string) {

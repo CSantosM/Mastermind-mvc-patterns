@@ -1,14 +1,14 @@
 package mastermind.views.console.menu;
 
-import mastermind.controllers.InGameController;
+import mastermind.controllers.AcceptorController;
 
 public abstract class Command extends mastermind.utils.Command {
 
-	protected InGameController inGameController;
+	protected AcceptorController acceptorController;
 
-	protected Command(String title, InGameController inGameController) {
+	protected Command(String title, AcceptorController acceptorController) {
 		super(title);
-		this.inGameController = inGameController;
+		this.acceptorController = acceptorController;
 	}
 
 }

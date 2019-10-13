@@ -2,6 +2,7 @@ package mastermind.models;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import mastermind.types.Color;
 
 public class Game {
@@ -76,6 +77,26 @@ public class Game {
 		this.secretCombination = memento.getSecretCombination();
 		this.results = memento.getResults();
 		this.proposedCombinations = memento.getProposedCombinations();
+	}
+
+	public boolean isFinished() {
+		return this.isLooser() || this.isWinner();
+	}
+
+	public List<Result> getResults() {
+		return this.results;
+	}
+
+	public List<ProposedCombination> getProposedCombinations() {
+		return this.proposedCombinations;
+	}
+
+	public SecretCombination getSecretCombination() {
+		return this.secretCombination;
+	}
+
+	public void setAttempts(int attempts) {
+		this.attempts = attempts;
 	}
 
 }

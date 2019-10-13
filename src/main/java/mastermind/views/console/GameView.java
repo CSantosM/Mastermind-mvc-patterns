@@ -12,9 +12,5 @@ public class GameView {
     public GameView(Controller controller) {
         this.controller = controller;
     }
-    
-    public void writeln() {
-    
-    }
 
 }
