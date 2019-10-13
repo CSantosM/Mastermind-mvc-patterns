@@ -8,7 +8,11 @@ public enum MessageView {
 	PROPOSED_COMBINATION("Propose a combination: "),
 	TITLE("----- MASTERMIND -----"),
 	WINNER("You've won!!! ;-)"),
-	LOOSER("You've lost!!! :-(");
+	LOOSER("You've lost!!! :-("),
+	OPTION("----- Choose an option ---- "),
+	SAVE("Do you want to save the game?"),
+	NAME("Name:"),
+	NAME_EXISTS("The proposed name already exists");
 
 	private String message;
 	

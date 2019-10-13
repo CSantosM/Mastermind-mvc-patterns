@@ -1,8 +1,9 @@
 package mastermind;
 
-import mastermind.controllers.Controller;
+import mastermind.controllers.AcceptorController;
 import mastermind.controllers.Logic;
 import mastermind.views.View;
+import mastermind.views.console.ConsoleView;
 
 public abstract class Mastermind {
 
@@ -11,20 +12,20 @@ public abstract class Mastermind {
 	private View view;
 
 	protected Mastermind() {
-		this.logic = new Logic();
-		this.view = this.createView();
+		this.logic = this.createLogic();
+		this.view = new ConsoleView();
 	}
-
-	protected abstract View createView();
 
 	protected void play() {
-		Controller controller;
+		AcceptorController acceptorController;
 		do {
-			controller = this.logic.getController();
-			if (controller != null) {
-				this.view.interact(controller);
+			acceptorController = this.logic.getController();
+			if (acceptorController != null) {
+				this.view.interact(acceptorController);
 			}
-		} while (controller != null);
+		} while (acceptorController != null);
 	}
+
+	protected abstract Logic createLogic();
 
 }

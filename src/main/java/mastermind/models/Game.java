@@ -38,9 +38,9 @@ public class Game {
 	public boolean isLooser() {
 		return this.attempts == Game.MAX_LONG;
 	}
-	
+
 	public boolean isWinner() {
-		return this.results.get(this.attempts-1).isWinner();
+		return this.results.size() > 0 && this.results.get(this.attempts - 1).isWinner();
 	}
 
 	public int getAttempts() {
@@ -61,6 +61,42 @@ public class Game {
 
 	public int getWidth() {
 		return Combination.getWidth();
+	}
+
+	public Memento createMemento() {
+		Memento memento = new Memento();
+		memento.setAttempts(this.attempts);
+		memento.setSecretCombination(this.secretCombination);
+		memento.setResults(this.results);
+		memento.setProposedCombinations(this.proposedCombinations);
+		return memento;
+	}
+
+	public void restore(Memento memento) {
+		this.attempts = memento.getAttempts();
+		this.secretCombination = memento.getSecretCombination();
+		this.results = memento.getResults();
+		this.proposedCombinations = memento.getProposedCombinations();
+	}
+
+	public boolean isFinished() {
+		return this.isLooser() || this.isWinner();
+	}
+
+	public List<Result> getResults() {
+		return this.results;
+	}
+
+	public List<ProposedCombination> getProposedCombinations() {
+		return this.proposedCombinations;
+	}
+
+	public SecretCombination getSecretCombination() {
+		return this.secretCombination;
+	}
+
+	public void setAttempts(int attempts) {
+		this.attempts = attempts;
 	}
 
 }
