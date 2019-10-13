@@ -4,85 +4,38 @@ import java.util.List;
 
 import mastermind.types.Color;
 
-public class Session {
+public interface Session {
 
-	private State state;
+	public int getGameWidth();
 
-	private Game game;
+	public void nextState();
 
-	private Registry registry;
+	public void gameClear();
 
-	public Session() {
-		this.state = new State();
-		this.game = new Game();
-		this.registry = new Registry(this.game);
-	}
+	public void stateReset();
 
-	public int getGameWidth() {
-		return this.game.getWidth();
-	}
+	public boolean isGameLooser();
 
-	public void nextState() {
-		this.state.next();
-	}
+	public boolean isGameWinner();
 
-	public void gameClear() {
-		this.game.clear();
+	public void addProposedCombination(List<Color> colors);
 
-	}
+	public int getAttempts();
 
-	public void stateReset() {
-		this.state.reset();
+	public List<Color> getColors(int position);
 
-	}
+	public int getBlacks(int position);
 
-	public boolean isGameLooser() {
-		return this.game != null && this.game.isLooser();
-	}
+	public int getWhites(int position);
 
-	public boolean isGameWinner() {
-		return this.game != null && this.game.isWinner();
-	}
+	public StateValue getValueState();
 
-	public void addProposedCombination(List<Color> colors) {
-		this.game.addProposedCombination(colors);
-		this.registry.registry();
-	}
+	public void redo();
 
-	public int getAttempts() {
-		return this.game.getAttempts();
-	}
+	public boolean isRedoable();
 
-	public List<Color> getColors(int position) {
-		return this.game.getColors(position);
-	}
+	public void undo();
 
-	public int getBlacks(int position) {
-		return this.game.getBlacks(position);
-	}
-
-	public int getWhites(int position) {
-		return this.game.getWhites(position);
-	}
-
-	public StateValue getValueState() {
-		return this.state.getValueState();
-	}
-
-	public void redo() {
-		this.registry.redo(this.game);
-	}
-
-	public boolean isRedoable() {
-		return this.registry.isRedoable();
-	}
-
-	public void undo() {
-		this.registry.undo(this.game);
-	}
-
-	public boolean isUndoable() {
-		return this.registry.isUndoable();
-	}
+	public boolean isUndoable();
 
 }

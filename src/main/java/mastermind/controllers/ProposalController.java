@@ -63,8 +63,4 @@ public class ProposalController extends Controller {
 		return this.session.getWhites(position);
 	}
 	
-	public boolean canPlayerContinues() {
-		return !this.isLooser() && !this.isWinner();
-	}
-	
 }
